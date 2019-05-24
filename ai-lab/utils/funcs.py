@@ -2,6 +2,8 @@
 Utility functions
 """
 
+import matplotlib.pyplot as plt
+
 
 def build_path(node):
     """
@@ -18,3 +20,47 @@ def build_path(node):
         path.append(node.state)
         node = node.parent
     return tuple(reversed(path))
+
+
+def run_episode(environment, policy, limit):
+    """
+    Executes an episode within ``env`` following ``policy``
+
+    Args:
+        environment: problem
+        policy: policy to follow
+        limit: maximum number of steps
+
+    Returns:
+        reward
+    """
+    obs = environment.reset()
+    done = False
+    reward = 0
+    s = 0
+    while not done and s < limit:
+        obs, r, done, _ = environment.step(policy[obs])
+        reward += r
+        s += 1
+    return reward
+
+
+def plot(series, title, xlabel, ylabel):
+    """
+    Plots data
+
+    Args:
+        series: data series
+        title: plot title
+        xlabel: x labels
+        ylabel: y labels
+        ylabel: y labels
+    """
+    plt.figure(figsize=(13, 6))
+    for s in series:
+        plt.plot(s["x"], s["y"], label=s["label"])
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.title(title)
+    plt.legend()
+    plt.show()
