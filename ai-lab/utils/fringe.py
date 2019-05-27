@@ -48,6 +48,9 @@ class FringeNode:
         """
         return self.state
 
+    def __str__(self):
+        return str(self.state)
+
 
 class Fringe(ABC):
     """
@@ -138,6 +141,9 @@ class Fringe(ABC):
         """
         return self.frdict[i]
 
+    def __str__(self):
+        return str([str(x) for x in self.fringe])
+
 
 class QueueFringe(Fringe):
     """
@@ -203,3 +209,15 @@ class PriorityFringe(Fringe):
                     del self.frdict[n.state]
                 self.frlen -= 1
                 return n
+
+
+def test():
+    fringe = QueueFringe()
+    fringe.add(FringeNode(1))
+    fringe.add(FringeNode(2))
+
+    print(fringe)
+
+
+if __name__ == "__main__":
+    test()
