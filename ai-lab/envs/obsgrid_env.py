@@ -23,7 +23,7 @@ class ObsGrid(Env):
 
     def __init__(self, actions, grid, actdyn, rewards):
         """
-        Creates an istance of the frozen maze environment
+        Creates an istance of the grid environment
 
         Args:
             actions: available actions

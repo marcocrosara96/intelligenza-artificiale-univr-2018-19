@@ -2,6 +2,7 @@
 Utility functions
 """
 
+import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -64,3 +65,19 @@ def plot(series, title, xlabel, ylabel):
     plt.title(title)
     plt.legend()
     plt.show()
+
+
+def rolling(a, window):
+    """
+    Running mean
+
+    Args:
+        a: input array
+        window: sliding window size
+
+    Returns:
+         Running mean
+    """
+    shape = a.shape[:-1] + (a.shape[-1] - window + 1, window)
+    strides = a.strides + (a.strides[-1],)
+    return np.mean(np.lib.stride_tricks.as_strided(a, shape=shape, strides=strides), -1)

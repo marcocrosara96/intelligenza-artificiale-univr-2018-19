@@ -32,3 +32,7 @@ register(
 register(
     id='HugeLavaFloor-v0',
     entry_point='envs:HugeLavaFloorEnv')
+
+register(
+    id='Cliff-v0',
+    entry_point='envs:CliffEnv')
