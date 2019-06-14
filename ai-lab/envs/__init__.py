@@ -6,6 +6,7 @@ from gym.envs.registration import register
 from envs.maze_env import *
 from envs.lava_env import *
 from envs.cliff_env import *
+from envs.windy_env import *
 
 register(
     id='SmallMaze-v0',
@@ -36,3 +37,7 @@ register(
 register(
     id='Cliff-v0',
     entry_point='envs:CliffEnv')
+
+register(
+    id='WindyGridworld-v0',
+    entry_point='envs:WindyGridworldEnv')
